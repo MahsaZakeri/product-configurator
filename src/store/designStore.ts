@@ -1,21 +1,15 @@
 import { create } from 'zustand';
-
-type DesignState = {
-  color: string;
-  text: string;
-  image: File | null;
-  setColor: (color: string) => void;
-  setText: (text: string) => void;
-  setImage: (image: File | null) => void;
-  resetDesign: () => void;
-};
+import type { DesignState } from "../models/DesignState";
+import { ProductSize } from "../models/ProductSize";
 
 export const useDesignStore = create<DesignState>((set) => ({
-  color: '#ffffff',
-  text: '',
+  color: "#ffffff",
+  text: "",
   image: null,
+  size: ProductSize.M,
   setColor: (color) => set({ color }),
   setText: (text) => set({ text }),
   setImage: (image) => set({ image }),
-  resetDesign: () => set({ color: '#ffffff', text: '', image: null }),
+  setSize: (size) => set({ size }),
+  resetDesign: () => set({ color: "#ffffff", text: "", image: null, size: ProductSize.M }),
 }));
